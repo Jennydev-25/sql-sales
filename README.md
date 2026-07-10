@@ -4,6 +4,20 @@
 
 ---
 
+## 📑 Índice
+
+- [Descripción](#-descripción)
+- [Pasos realizados](#-pasos-realizados)
+- [Scripts SQL](#-scripts-sql)
+- [Estructura del repositorio](#-estructura-del-repositorio)
+- [Capturas](#-capturas)
+- [Cómo reproducir el proyecto](#-cómo-reproducir-el-proyecto)
+- [Tecnologías](#️-tecnologías)
+- [Recursos](#-recursos)
+- [Autora](#-autora)
+
+---
+
 ## 📋 Descripción
 
 El objetivo de este proyecto es aprender a trabajar con una base de datos MySQL alojada en un contenedor Docker, escribiendo consultas SQL que respondan preguntas concretas sobre un dataset de ventas.
@@ -21,15 +35,11 @@ Los requisitos principales son:
 
 ## 📋 Pasos realizados
 
-1. **Base de datos MySQL en Docker.** Se reutiliza el contenedor `test-mysql` (imagen `mysql:8.0-debian`), creado en un ejercicio anterior de Docker, y se crea dentro una nueva base de datos independiente:
+1. **Base de datos MySQL en Docker.** Se reutiliza el contenedor `test-mysql` (imagen `mysql:8.0-debian`), creado en un [ejercicio anterior de Docker](https://github.com/Jennydev-25/docker-image-and-container), y se crea dentro una nueva base de datos independiente.
 
-   ```sql
-   CREATE DATABASE sales_db;
-   ```
+2. **Creación de la tabla y carga de datos**, con el script proporcionado (20 registros de ventas de distintos países y continentes).
 
-2. **Creación de la tabla y carga de datos**, con el script proporcionado por el profesor (20 registros de ventas de distintos países y continentes).
-
-3. **Escritura y verificación de las 4 consultas SQL** (ver [`sql/queries/`](sql/queries/)), ejecutadas y comprobadas una a una en DBeaver.
+3. **Escritura y verificación de las 4 consultas SQL**, ejecutadas y comprobadas una a una en DBeaver.
 
 ---
 
@@ -169,6 +179,64 @@ Resultados de ejecutar cada consulta en DBeaver, verificando que los valores obt
 #### Total de unidades en el continente americano (1785)
 
 ![Resultado: total unidades América](images/total-units-american-continent-result.png)
+
+---
+
+## 🚀 Cómo reproducir el proyecto
+
+### Requisitos previos
+
+- **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** instalado y en ejecución
+- **[DBeaver](https://dbeaver.io/download/)** instalado
+- **[Git](https://git-scm.com/downloads)** para clonar el repositorio
+
+### Pasos
+
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/Jennydev-25/sql-sales.git
+cd sql-sales
+```
+
+2. **Arrancar un contenedor MySQL** (si no tienes uno ya corriendo). Sustituye `*******` por la contraseña que quieras usar:
+
+```bash
+   docker pull mysql:8.0-debian
+   docker run --name test-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=******* -d mysql:8.0-debian
+```
+
+3. **Conectar DBeaver al contenedor:** `Database` → `New Database Connection` → **MySQL** → host `localhost`, puerto `3306`, usuario `root`, contraseña la que hayas elegido en el paso anterior.
+4. **Ejecutar los scripts de configuración**, en orden, desde [`sql/setup/`](sql/setup/):
+   | Orden | Script | Qué hace |
+   | :---: | ---------------------------------------- | -------------------------------------------- |
+   | 1 | `01_create_sales_db.sql` | Crea la base de datos `sales_db` |
+   | 2 | `02_create_table_and_insert_data.sql` | Crea la tabla `sales` e inserta 20 filas |
+5. **Ejecutar las consultas** desde [`sql/queries/`](sql/queries/), en el orden que prefieras (son independientes entre sí):
+   | Script | Qué responde |
+   | -------------------------------------------- | --------------------------------------------- |
+   | `select_category_and_subcategory.sql` | Todas las categorías y subcategorías |
+   | `select_subcategories_starting_with_c.sql` | Subcategorías que empiezan por "C" |
+   | `total_unit_sales.sql` | Total de unidades vendidas |
+   | `total_units_american_continent.sql` | Total de unidades en América (Norte + Sur) |
+
+---
+
+## 🛠️ Tecnologías
+
+- **[Docker](https://www.docker.com/)** / **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** — Contenedor donde corre MySQL
+- **[MySQL 8.0](https://hub.docker.com/_/mysql)** — Motor de base de datos
+- **[DBeaver](https://dbeaver.io/)** — Cliente de base de datos usado para crear `sales_db`, la tabla `sales` y ejecutar las consultas
+- **[Visual Studio Code](https://code.visualstudio.com/)** — Editor usado para redactar la documentación y gestionar el proyecto
+- **[Markdown](https://www.markdownguide.org/)** — Lenguaje de marcado para el README
+- **[Git](https://git-scm.com/)** / **[GitHub](https://github.com/)** — Control de versiones y alojamiento del proyecto
+
+---
+
+## 📚 Recursos
+
+- **[W3Schools SQL Tutorial](https://www.w3schools.com/sql/)** — Referencia y ejemplos de sintaxis SQL (recurso indicado en el enunciado del ejercicio)
+- **[MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)** — Documentación oficial de MySQL para consultar la sintaxis de las cláusulas SQL
+- **[Docker Docs — Get started](https://docs.docker.com/get-started/)** — Guía oficial de Docker para la creación y gestión de contenedores
 
 ---
 
