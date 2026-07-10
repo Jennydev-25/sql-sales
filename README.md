@@ -82,7 +82,7 @@ INSERT INTO sales_db.sales (
 ('2024-01-24', 'Frozen', 'Frozen Pizza', 'Australia', 'AU', 'Oceania', 'Melbourne', 165);
 ```
 
-### Consultas de análisis ([`sql/queries/`](sql/queries/))
+### Scripts para las consultas ([`sql/queries/`](sql/queries/))
 
 **select_category_and_subcategory.sql** — Todos los datos de categoría y subcategoría:
 
@@ -106,6 +106,32 @@ SELECT SUM(unit_sales) AS total_unit_sales FROM sales_db.sales;
 
 ```sql
 SELECT SUM(unit_sales) AS total_american_units FROM sales_db.sales WHERE continent LIKE '%America';
+```
+
+---
+
+## 📁 Estructura del repositorio
+
+```text
+sql-sales/
+├── sql/
+│   ├── setup/
+│   │   ├── 01_create_sales_db.sql
+│   │   └── 02_create_table_and_insert_data.sql
+│   └── queries/
+│       ├── select_category_and_subcategory.sql
+│       ├── select_subcategories_starting_with_c.sql
+│       ├── total_unit_sales.sql
+│       └── total_units_american_continent.sql
+├── images/
+│   ├── sales-table-diagram.png
+│   ├── sales-table-data.png
+│   ├── select-category-and-subcategory-result.png
+│   ├── select-subcategories-starting-with-c-result.png
+│   ├── total-unit-sales-result.png
+│   └── total-units-american-continent-result.png
+├── README.md
+└── .gitignore
 ```
 
 ---
