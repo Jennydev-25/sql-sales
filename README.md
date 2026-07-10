@@ -192,10 +192,11 @@ Resultados de ejecutar cada consulta en DBeaver, verificando que los valores obt
 
 ### Pasos
 
+1. **Clonar el repositorio:**
+
 ```bash
-# 1. Clonar el repositorio
-git clone https://github.com/Jennydev-25/sql-sales.git
-cd sql-sales
+   git clone https://github.com/Jennydev-25/sql-sales.git
+   cd sql-sales
 ```
 
 2. **Arrancar un contenedor MySQL** (si no tienes uno ya corriendo). Sustituye `*******` por la contraseña que quieras usar:
