@@ -136,6 +136,42 @@ sql-sales/
 
 ---
 
+## 📸 Capturas
+
+### Estructura de la tabla `sales`
+
+Diagrama generado por DBeaver mostrando las 8 columnas de la tabla y sus tipos de dato.
+
+![Diagrama de la tabla sales](images/sales-table-diagram.png)
+
+### Datos cargados
+
+Las 20 filas insertadas en la tabla `sales`, verificando que la carga de datos se realizó correctamente.
+
+![Datos completos de la tabla sales](images/sales-table-data.png)
+
+### Resultados de las consultas
+
+Resultados de ejecutar cada consulta en DBeaver, verificando que los valores obtenidos son correctos.
+
+#### Categoría y subcategoría (20 filas)
+
+![Resultado: categoría y subcategoría](images/select-category-and-subcategory-result.png)
+
+#### Subcategorías que empiezan por "C" (6 filas)
+
+![Resultado: subcategorías con C](images/select-subcategories-starting-with-c-result.png)
+
+#### Total de unidades vendidas (3885)
+
+![Resultado: total de unidades vendidas](images/total-unit-sales-result.png)
+
+#### Total de unidades en el continente americano (1785)
+
+![Resultado: total unidades América](images/total-units-american-continent-result.png)
+
+---
+
 ## 👩‍💻 Autora
 
 **[Jenny Sánchez Requejo](https://github.com/Jennydev-25)**
